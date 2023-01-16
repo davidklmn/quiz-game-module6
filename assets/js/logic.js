@@ -5,7 +5,7 @@ var answers = document.getElementById("choices");
 var questionButton = document.createElement("button");
 
 var currentQuiz = 0;
-var timer = 60;
+var time = document.getElementById("time");
 
 document.getElementById("start").addEventListener("click", startQuiz);
 
@@ -28,4 +28,16 @@ function startQuiz() {
   }
 }
 
-function startTimer() {}
+function startTimer() {
+  time.innerText = 60;
+  var timerInterval = setInterval(function () {
+    time.innerText--;
+
+    if (time.innerText == 0) {
+      clearInterval(timerInterval);
+      ending();
+    }
+  }, 1000);
+}
+
+function ending() {}
