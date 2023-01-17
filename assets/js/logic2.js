@@ -5,6 +5,7 @@ var questionDiv = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title");
 var endScreen = document.getElementById("end-screen");
 var choices = document.getElementById("choices");
+var finalScore = document.getElementById("final-score");
 var currentQuestion;
 var questionIndex = 0;
 // Click licstener for start button which starts the quiz game
@@ -74,11 +75,9 @@ function startTimer() {
 
     if (time.innerText <= 0) {
       clearInterval(timerInterval);
-      localStorage.setItem("score", time.innerText);
-    }
-    if (time.innerText < 0) {
-      clearInterval(timerInterval);
       time.innerText = 0;
+      localStorage.setItem("score", time.innerText);
+      ending();
     }
   }, 1000);
 }
@@ -86,4 +85,7 @@ function startTimer() {
 function ending() {
   clearQuestion();
   endScreen.className = "show";
+  clearInterval();
+  localStorage.setItem("score", time.innerText);
+  finalScore.innerText = localStorage.getItem("score");
 }
