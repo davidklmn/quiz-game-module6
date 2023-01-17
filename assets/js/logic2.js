@@ -84,8 +84,6 @@ function startTimer() {
     }
   }, 1000);
 }
-// User score
-
 //Game ending
 function ending() {
   clearQuestion();
