@@ -1,6 +1,7 @@
 # quiz-game-module6
 Javascript Quiz Game
-Please note I am using logic2.js file.
+<br>
+<b>Please note I am using logic2.js file.</b>
 
 ## Description
 
