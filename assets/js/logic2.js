@@ -6,6 +6,9 @@ var questionTitle = document.getElementById("question-title");
 var endScreen = document.getElementById("end-screen");
 var choices = document.getElementById("choices");
 var finalScore = document.getElementById("final-score");
+var initials = document.getElementById("initials");
+var scoreSubmit = document.getElementById("submit");
+var messageDiv = document.getElementById("feedback");
 var currentQuestion;
 var questionIndex = 0;
 // Click licstener for start button which starts the quiz game
@@ -81,6 +84,8 @@ function startTimer() {
     }
   }, 1000);
 }
+// User score
+
 //Game ending
 function ending() {
   clearQuestion();
@@ -88,4 +93,25 @@ function ending() {
   clearInterval();
   localStorage.setItem("score", time.innerText);
   finalScore.innerText = localStorage.getItem("score");
+}
+//Storing highscore
+submit.addEventListener("click", function (event) {
+  event.preventDefault();
+  var userScore = {
+    uInitials: initials.value,
+    uScore: localStorage.getItem("score"),
+  };
+  if (initials === "") {
+    displayMessage("error", "Initials cannot be blank");
+  } else if (initials.length > 3) {
+    displayMessage("error", "Initials cannot be longer than 3 character");
+  } else {
+    displayMessage("succes", "Score sotred");
+    localStorage.setItem("userScore", JSON.stringify(userScore));
+  }
+});
+// Message function
+function displayMessage(type, message) {
+  messageDiv.textContent = message;
+  messageDiv.setAttribute("class", type);
 }
