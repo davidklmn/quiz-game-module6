@@ -101,13 +101,14 @@ submit.addEventListener("click", function (event) {
     uInitials: initials.value,
     uScore: localStorage.getItem("score"),
   };
-  if (initials === "") {
+  if (userScore.uInitials === "") {
     displayMessage("error", "Initials cannot be blank");
-  } else if (initials.length > 3) {
+  } else if (userScore.uInitials.length > 3) {
     displayMessage("error", "Initials cannot be longer than 3 character");
   } else {
     displayMessage("succes", "Score sotred");
     localStorage.setItem("userScore", JSON.stringify(userScore));
+    window.location.href = "highscores.html";
   }
 });
 // Message function
